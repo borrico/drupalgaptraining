@@ -1,0 +1,157 @@
+// variables
+$color-cyan: #73f3cd;
+$color-white: #ffffff;
+$color-grey-light: #eeeeee;
+
+a {
+  text-decoration: none;
+}
+
+body {
+  @include image-background( 'body_bg.png', $color-grey-light, center top, repeat-x );
+}
+
+#header {
+  @include image-background( 'header_bg.png', transparent, center top, no-repeat );
+  height: 340px;
+}
+#navigation {
+  height: 50px;
+  top: -50px;
+  background-color: rgba(0,0,0,0.5);
+
+  #main-menu {
+    height: 50px;
+
+    li a {
+      @include eased();
+
+      box-sizing: border-box;
+      color: $color-white;
+      display: block;
+      font-size: 15px;
+      height: 50px;
+      padding: 14px 20px 10px;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $color-cyan;
+      }
+    }
+  }
+}
+
+#main {
+  padding-top: 0;
+}
+
+div#block-block-4 {
+  background: url("../images/postscript3.png") no-repeat;
+  height: 203px;
+  width: auto;
+  padding-left: 2px;
+  position: relative;
+}
+div#block-block-5 {
+  background: url("../images/postscript2.png") no-repeat;
+  height: 203px;
+  width: auto;
+  padding-left: 2px;
+  position: relative;
+}
+div#block-block-6 {
+  background: url("../images/postscript1.png") no-repeat;
+  height: 203px;
+  width: auto;
+  padding-left: 2px;
+  position: relative;
+}
+div#block-block-2 {
+  background-color: gray;
+  margin: 10px;
+  border: 2px;
+  border-color: #fff;
+  height: 60px;
+}
+
+div#block-block-3 {
+  background-color: yellowgreen;
+  margin: 10px;
+  height: 60px;
+}
+/*PEACE block*/
+div#block-block-3 p {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 15px;
+  margin: 0px;
+  padding: 18px 0 0 0;
+  font-style: italic;
+}
+/*CALM block*/
+div#block-block-2 p {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 15px;
+  margin: 0px;
+  padding: 18px 0 0 0;
+  font-style: italic;
+}
+
+div#block-block-4 p {
+  position: absolute;
+  margin: 0;
+  bottom: 0;
+  right: 0;
+  padding-right: 46px;
+  padding-bottom: 6px;
+}
+
+div#block-block-5 p {
+  position: absolute;
+  margin: 0;
+  bottom: 0;
+  right: 0;
+  padding-right: 46px;
+  padding-bottom: 6px;
+}
+
+div#block-block-6 p {
+  position: absolute;
+  margin: 0;
+  bottom: 0;
+  right: 0;
+  padding-right: 46px;
+  padding-bottom: 6px;
+}
+
+div#block-menu-block-1 li {
+  display: inline-block;
+  padding: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+}
+/*Footer styles*/
+footer#footer {
+  background-color: rgb(87, 100, 97);
+}
+/*Footer Menu block to align in the middle*/
+div#block-menu-block-1 {
+  margin: 0 auto;
+  width: 378px;
+
+  a {
+    color: #ffffff;
+
+    &:hover {
+      color: blue;
+    }
+  }
+}
+
+div#block-block-7 p {
+  text-align: center;
+  margin-top: -28px;
+  color: white;
+}

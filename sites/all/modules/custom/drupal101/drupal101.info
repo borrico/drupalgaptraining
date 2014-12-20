@@ -1,0 +1,8 @@
+;$Id:$
+name = Drupal 101 Core
+description = practice module building. provides common function for Drupal 101
+package = Drupal 101
+version = "7.x-1.0"
+core = 7.x
+dependencies[] = node
+

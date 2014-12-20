@@ -1,0 +1,7 @@
+name = Corp Clean Subtheme
+description = A corporate clean subtheme.
+package = Core
+version = VERSION
+core = 7.x
+base theme = corporateclean
+stylesheets[all][] = corpcleansubtheme.css

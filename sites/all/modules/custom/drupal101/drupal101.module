@@ -1,0 +1,130 @@
+<?php
+
+/**
+ * @file
+ * 
+ * Drupal 101 main module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function drupal101_menu() {
+  $items = array();
+
+  $items['admin/config/development/test-page'] = array(
+    'title' => 'Test Page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('drupal101_test_form'),
+    'access arguments' => array('access content'),
+    'description' => 'Contains basic form.',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['drupal-101'] = array(
+    'title' => 'This is the page title',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('drupal101_test_page_form'),
+    'access arguments' => array('access content'),
+    'description' => 'Contains basic form.',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+
+/**
+ * Use Drupal's Form API (FAPI) to wire up buttons to kick off batch operations.
+ */
+function drupal101_test_form($form, &$form_state) {
+  $form['drupal101_test'] = array(
+   '#type' => 'fieldset',
+   '#title' => t('Test fields here'),
+   '#description' => t('List of drupal fields.'),
+   '#collapsible' => TRUE,
+   '#collapsed' => FALSE,
+  );
+$form['drupal101_test']['titulo'] = array(
+  '#type' => 'textfield',
+  '#title' => t('Subject'),
+  '#default_value' => variable_get('titulo'),
+  '#size' => 60,
+  '#maxlength' => 128,
+  '#required' => TRUE,
+);
+ //This will display a submit button
+ // $form['drupal101_test']['drupal101_fields'] = array(
+ //   '#type' => 'submit',
+ //   '#value' => t('Submit'),
+ // );
+  $form['#submit'][] = 'drupal101_test_form_submit';
+  $form = system_settings_form($form);
+  return $form;
+}
+
+
+/**
+ * Submit handler for drupal101_test_form().
+ */
+function drupal101_test_form_submit($form, &$form_state) {
+  drupal_set_message(t("Submit button was clicked !home .", array('!home' => l(t('Home page'), '<front>'))), 'status');
+}
+
+
+/**
+ * Use Drupal's Form API (FAPI) to wire up buttons to kick off batch operations.
+ */
+function drupal101_test_page_form($form, &$form_state) {
+  $form['drupal101_page'] = array(
+   '#type' => 'fieldset',
+   '#title' => t('Test fields here'),
+   '#description' => t('List of drupal fields.'),
+   '#collapsible' => TRUE,
+   '#collapsed' => FALSE,
+  );
+
+  $form['drupal101_page']['drupal101_page_fields'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+  );
+  return $form;
+}
+/**
+ * Implements hook_init().
+ */
+function drupal101_init() {
+  $node = menu_get_object();
+  debug($node);
+}
+
+/**
+ * Submit handler for drupal101_test_form().
+ */
+function drupal101_test_page_form_submit($form, &$form_state) {
+  drupal_set_message(t("Ayos! Want to go to !home? .", array('!home' => l(t('Home page'), '<front>'))), 'status');
+}
+
+/**
+ *Implements hook_form_alter
+ */
+function drupal101_form_user_login_block_alter(&$form, &$form_state, $form_id) {
+   debug($form,NULL,TRUE);
+   $form['name']['#title'] = t("Customer Name");
+   $form['pass']['#title'] = t("PASSWORD");
+ }
+
+
+/**
+  * Implements hook_form_FORM_ID_alter().
+  */
+//function drupal101_form_user_login_block_alter(&$form, &$form_state, $form_id) {
+  //$form['pass']['#states'] = array(
+    // Disable the password field when the name field is empty.
+   //'disabled' => array(
+   //':input[name="name"]' => array('value' => ''),
+   //),
+ //);
+//}
+
+
